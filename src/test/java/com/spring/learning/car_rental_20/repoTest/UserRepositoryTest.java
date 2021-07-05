@@ -14,6 +14,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class UserRepositoryTest {
 
+    private final User user = new User("Oleksandr", "Kurylyk", "1111", "sanja@gmail.com");
+
     @Autowired
     private  UserRepository userRepository;
 
@@ -22,9 +24,15 @@ public class UserRepositoryTest {
 
     @Test
     public void createUserTest(){
-        User user = new User("Oleksandr", "Kurylyk", "1111", "sanja@gmail.com");
         User savedUser = userRepository.save(user);
         User existUser = entityManager.find(User.class, savedUser.getId());
         assertThat(existUser.getEmail()).isEqualTo(user.getEmail());
+    }
+
+    @Test
+    public void findUserByEmail(){
+        userRepository.save(user);
+        User foundUser = userRepository.findByEmail(user.getEmail());
+        assertThat(foundUser).isNotNull();
     }
 }

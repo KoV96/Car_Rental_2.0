@@ -1,6 +1,8 @@
 package com.spring.learning.car_rental_20.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -14,13 +16,22 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
     private Long id;
+
     @Column(name = "firstName", nullable = false)
+    @NotEmpty(message = "Name should not be empty")
+    @Size(min = 2, max = 20, message = "Name should be between 2 and 20 characters")
     private String firstName;
+
     @Column(name = "lastName", nullable = false)
+    @NotEmpty(message = "Name should not be empty")
     private String lastName;
+
     @Column(name = "password", nullable = false)
+    @NotEmpty(message = "Name should not be empty")
     private String password;
+
     @Column(name = "email", nullable = false)
+    @NotEmpty(message = "Name should not be empty")
     private String email;
 
     public User(){}

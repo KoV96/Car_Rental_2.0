@@ -30,4 +30,10 @@ public class MainController {
         userRepository.save(user);
         return "register_success";
     }
+
+    // TODO Add more functionality ....
+    @GetMapping("/user_page")
+    public String viewUserPage(Model model){
+        return "user_page";
+    }
 }
