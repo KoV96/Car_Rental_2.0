@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+<div id="Rental" class="tabcontent">
+    <h1>Rental</h1>
+    <p>We have more than 100 cars with different characteristics. Choose the car of your dream! </p>
+</div>
+
+<div id="Info" class="tabcontent">
+    <h1>How to reserve</h1>
+    <p>If you want to reserve one car or more, You should login or create your account by selecting signup button below</p>
+</div>
+
+<div id="About" class="tabcontent">
+    <h1>About</h1>
+    <p>Our car rental service is the best in our city, we have large spectre of cars for everyone.</p>
+</div>
+
+<div id="Contacts" class="tabcontent">
+    <h1>Contacts</h1>
+    <p>For more details You can call by the number: +38 (068)-067-18-10</p>
+</div>
+
+<button class="tablink" onclick="openCity('Rental', this, 'red')" id="defaultOpen">Rental</button>
+<button class="tablink" onclick="openCity('Info', this, 'green')">Info</button>
+<button class="tablink" onclick="openCity('About', this, 'blue')">About</button>
+<button class="tablink" onclick="openCity('Contacts', this, 'orange')">Contacts</button>
+<br/>
+<hr/>
+<div class="container">
+    <img src="images/home.jpg" alt="Cars" style="width:100%;">
+    <div class="text-block">
+        <h4>Rental</h4>
+        <p>If you don`t have account, please <a th:href="@{/register}">SignUp</a> else if You have already had - <a th:href="@{/login}">LogIn</a></p>
+    </div>
+</div>
+
+<div class="container">
+    <span class="text-muted"></span>
+</div>
+
+<div class="footer">
+    <p>
+    <h2>By Oleksandr Kurylyk</h2>
+    </p>
+</div>
+
+
+<script>
+function openCity(cityName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(cityName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+
+body {font-family: "Lato", sans-serif;}
+
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 50px;
+  text-align: center;
+}
+
+#Rental {background-color:red;}
+#Info {background-color:green;}
+#About {background-color:blue;}
+#Contacts {background-color:orange;}
+
+.container {
+  position: relative;
+  font-family: Arial;
+}
+
+.text-block {
+  position: absolute;
+  left:40%;
+  margin-left:100px;
+  top:30%;
+  margin-top:100px;
+  background-color: black;
+  color: white;
+  padding-left: 100px;
+  padding-right: 100px;
+
+  .footer {
+     position: fixed;
+     left: 0;
+     bottom: 0;
+     width: 100%;
+     background-color: black;
+     color: black;
+     text-align: center;
+}
