@@ -7,7 +7,10 @@
 </head>
 <body>
     <div class="container" align="center">
-        <h1><mark>Welcome to our car rental service</mark></h1>
+        <form th:action="@{/logout}" method="post">
+            <h1><mark>Welcome to our car rental service, <b>[[${#request.userPrincipal.principal.fullName}]]</b></mark></h1>
+            <input type="submit" value="Sign Out">
+        </form>
     </div>
     <div align="center">
         <h3><a th:href="@{/car_list}">View all cars</a></h3>

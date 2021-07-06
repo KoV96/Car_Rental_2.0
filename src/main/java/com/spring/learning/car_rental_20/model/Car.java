@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Car {
 
     @ManyToOne
-    @JoinColumn(name = "receipt_id", nullable = false)
+    @JoinColumn(name = "receipt_id")
     private Receipt receipt;
 
     @Id

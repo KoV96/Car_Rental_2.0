@@ -25,9 +25,9 @@ body {font-family: "Lato", sans-serif;}
   text-align: center;
 }
 
-#Rental {background-color:red;}
-#Info {background-color:green;}
-#About {background-color:blue;}
+#Rental {background-color:teal;}
+#Info {background-color:indigo;}
+#About {background-color:darkRed;}
 #Contacts {background-color:orange;}
 
 .container {
