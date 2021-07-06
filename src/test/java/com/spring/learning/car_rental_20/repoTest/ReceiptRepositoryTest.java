@@ -32,7 +32,7 @@ public class ReceiptRepositoryTest {
         cars.add(new Car("Toyota", "Rav-4", "2016", 180.0, 70.0));
         Receipt receipt = new Receipt(user, cars, 5);
         Receipt savedReceipt = receiptRepository.save(receipt);
-        Receipt existReceipt = entityManager.find(Receipt.class, savedReceipt.getDays());
+        Receipt existReceipt = entityManager.find(Receipt.class, savedReceipt.getId());
         assertThat(existReceipt.getUser()).isEqualTo(receipt.getUser());
     }
 }

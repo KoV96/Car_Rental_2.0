@@ -33,6 +33,6 @@ public class UserRepositoryTest {
     public void findUserByEmail(){
         userRepository.save(user);
         User foundUser = userRepository.findByEmail(user.getEmail());
-        assertThat(foundUser).isNotNull();
+        assertThat(foundUser.getEmail()).isEqualTo(user.getEmail());
     }
 }

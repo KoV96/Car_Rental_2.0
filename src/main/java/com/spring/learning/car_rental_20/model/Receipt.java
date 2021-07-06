@@ -63,7 +63,13 @@ public class Receipt {
     }
 
     public Double getTotalPrice() {
-        return totalPrice;
+        if(cars.size() != 0) {
+            for (Car car : cars) {
+                totalPrice += car.getPrice();
+            }
+            return totalPrice * days;
+        }
+        return 0.0;
     }
 
     public void setTotalPrice(Double totalPrice) {
