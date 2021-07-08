@@ -11,6 +11,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -28,7 +30,7 @@ public class ReceiptRepositoryTest {
     @Test
     public void createReceiptTest(){
         User user = new User("Oleksandr", "Kurylyk", "1111", "sanja@gmail.com");
-        Set<Car> cars = new HashSet<>();
+        List<Car> cars = new LinkedList<>();
         cars.add(new Car("Toyota", "Rav-4", "2016", 180.0, 70.0));
         Receipt receipt = new Receipt(user, cars, 5);
         Receipt savedReceipt = receiptRepository.save(receipt);

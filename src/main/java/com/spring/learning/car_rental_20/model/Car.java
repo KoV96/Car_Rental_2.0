@@ -24,6 +24,16 @@ public class Car {
     private Double power;
     @Column(name = "price_per_day")
     private Double price;
+    @Column(name = "quantity")
+    private Integer quantity;
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
 
     public Car(String carBrand, String carModel, String year, Double power, Double price) {
         this.carBrand = carBrand;

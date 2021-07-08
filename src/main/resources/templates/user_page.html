@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <title>My Page</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="header.css">
 </head>
 <body>
+    <div th:insert="header :: topnav"></div>
     <div class="container" align="center">
-        <form th:action="@{/logout}" method="post">
             <p>
                 <mark>Welcome to our car rental service, <b>[[${#request.userPrincipal.principal.fullName}]]</b></mark>
                <!-- <span sec: authentication="principal.authorities">Roles</span> -->
             </p>
             <input type="submit" value="Sign Out">
-        </form>
     </div>
     <div align="center">
         <h3><a th:href="@{/car_list}">View all cars</a></h3>
-        <h3><a th:href="@{/my_cars}">View my present reserves</a></h3>
+        <h3><a th:href="@{/receipt}">View my present reserves</a></h3>
     </div>
 
 </body>

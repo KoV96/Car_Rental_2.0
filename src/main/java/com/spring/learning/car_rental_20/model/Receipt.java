@@ -1,6 +1,7 @@
 package com.spring.learning.car_rental_20.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -11,7 +12,7 @@ public class Receipt {
     @JoinColumn(name = "user_id")
     private User user;
     @OneToMany(mappedBy = "receipt")
-    private Set<Car> cars;
+    private List<Car> cars;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,10 +23,15 @@ public class Receipt {
     @Column(name = "total_price")
     private Double totalPrice;
 
-    public Receipt(User user, Set<Car> cars, Integer days) {
+    public Receipt(User user, List<Car> cars, Integer days) {
         this.user = user;
         this.cars = cars;
         this.days = days;
+    }
+
+    public Receipt(User user, List<Car> cars) {
+        this.user = user;
+        this.cars = cars;
     }
 
     public Receipt(){}
@@ -38,11 +44,11 @@ public class Receipt {
         this.user = user;
     }
 
-    public Set<Car> getCars() {
+    public List<Car> getCars() {
         return cars;
     }
 
-    public void setCars(Set<Car> cars) {
+    public void setCars(List<Car> cars) {
         this.cars = cars;
     }
 
