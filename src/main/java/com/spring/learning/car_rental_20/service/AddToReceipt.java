@@ -1,5 +1,7 @@
-package com.spring.learning.car_rental_20.model;
+package com.spring.learning.car_rental_20.service;
 
+import com.spring.learning.car_rental_20.model.Car;
+import com.spring.learning.car_rental_20.model.Receipt;
 import com.spring.learning.car_rental_20.repos.CarRepository;
 import com.spring.learning.car_rental_20.repos.ReceiptRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -17,8 +17,6 @@ public class MainController {
 
     @Autowired
     private UserService userService;
-    @Autowired
-    private CarRepository carRepository;
 
     @GetMapping("")
     public String homePage(){
@@ -39,8 +37,7 @@ public class MainController {
 
 
     @GetMapping("/user_page")
-    public String viewUserPage(Model model){
-        //model.addAttribute("car", );
+    public String viewUserPage(){
         return "user_page";
     }
 }
