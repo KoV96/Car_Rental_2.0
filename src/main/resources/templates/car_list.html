@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Car List</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
 </head>
@@ -10,11 +10,11 @@
     <h1>Cars that You can reserve</h1>
 </div>
 <form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out">
+    <input type="submit" value="Sign Out"/>
 </form>
-<br>
-<hr>
-<br>
+<br/>
+<hr/>
+<br/>
 <form th:action="@{/receipt}" th:object="${addToRe}" method="post">
     <div>
         <table class="table table-stripped table-bordered">
@@ -26,8 +26,8 @@
             <th>Car Price</th>
             <th>Choose Car</th>
             </thead>
-            <tbody>
-            <tr th:each="car : ${cars}">
+            <tbody id="car_list">
+            <tr th:each="car : ${cars}" >
                 <td th:text="${car.getCarBrand}">Car Brand</td>
                 <td th:text="${car.getCarModel}">Car Model</td>
                 <td th:text="${car.getYear}">Car Year</td>
@@ -35,7 +35,7 @@
                 <td th:text="${car.getPrice}">Car Price</td>
                 <td>
                     <div class="ui checkbox">
-                        <input type="checkbox" th:field="*{checkedCars}" th:value="${car.getId}">
+                        <input type="checkbox" th:field="*{checkedCars}" th:value="${car.getId}"/>
                     </div>
                     <!--<div>
                         <input type="text" th:field="*{days}">
