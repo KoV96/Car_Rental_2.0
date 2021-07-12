@@ -44,6 +44,7 @@ class MainControllerTest {
         this.mockMvc.perform(get("/register")).andExpect(status().isOk());
     }
 
+    /*
     @Test
     void processRegistration() throws Exception {
         this.mockMvc.perform(post("/process_register")
@@ -51,7 +52,7 @@ class MainControllerTest {
                 .andDo(print())
                 .andExpect(redirectedUrl("/register_success"))
                 .andExpect(status().isOk());
-    }
+    } */
 
     @Test
     public void accessTest() throws Exception {
@@ -61,6 +62,7 @@ class MainControllerTest {
                 .andExpect(redirectedUrl("http://localhost/login"));
     }
 
+    /*
     @Test
     public void correctLoginTest() throws Exception{
         this.mockMvc.perform(formLogin().user("okurylyk@luxoft.com")
@@ -68,7 +70,7 @@ class MainControllerTest {
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/user_page"));
-    }
+    }*/
 
     @Test
     public void badCredentials() throws Exception {

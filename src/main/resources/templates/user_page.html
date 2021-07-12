@@ -7,18 +7,18 @@
     <link rel="stylesheet" type="text/css" href="header.css">
 </head>
 <body>
-    <div th:insert="header :: topnav"></div>
-    <div class="container" align="center">
-            <p>
-                <mark>Welcome to our car rental service, <b>[[${#request.userPrincipal.principal.fullName}]]</b></mark>
-               <!-- <span sec: authentication="principal.authorities">Roles</span> -->
-            </p>
-            <input type="submit" value="Sign Out">
-    </div>
-    <div align="center">
-        <h3><a th:href="@{/car_list}">View all cars</a></h3>
-        <h3><a th:href="@{/receipt}">View my present reserves</a></h3>
-    </div>
+<div th:insert="header :: topnav"></div>
+<div class="container" align="center">
+    <p>
+        <mark>Welcome to our car rental service, <b>[[${#request.userPrincipal.principal.fullName}]]</b></mark>
+        <!-- <span sec: authentication="principal.authorities">Roles</span> -->
+    </p>
+    <input type="submit" value="Sign Out">
+</div>
+<div align="center">
+    <h3><a th:href="@{/car_list}">View all cars</a></h3>
+    <h3><a th:href="@{/receipt}">View my present reserves</a></h3>
+</div>
 
 </body>
 </html>

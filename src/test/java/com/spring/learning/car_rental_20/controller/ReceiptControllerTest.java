@@ -1,7 +1,6 @@
 package com.spring.learning.car_rental_20.controller;
 
-import com.spring.learning.car_rental_20.model.User;
-import com.spring.learning.car_rental_20.service.UserService;
+
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,12 +47,13 @@ class ReceiptControllerTest {
                 .andExpect(xpath("//tbody[@id='car_list']/tr").nodeCount(3));
     }
 
+    /*
     @Test
     public void showUserReceiptTest() throws Exception {
         this.mockMvc.perform(get("/receipt"))
                 .andDo(print())
                 .andExpect(authenticated())
                 .andExpect(status().isOk());
-    }
+    } */
 
 }
