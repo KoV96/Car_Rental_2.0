@@ -2,7 +2,6 @@ package com.spring.learning.car_rental_20.model;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "receipts")
@@ -11,7 +10,13 @@ public class Receipt {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    @OneToMany(mappedBy = "receipt")
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "receipts_cars",
+            joinColumns = @JoinColumn(name = "receipt_id"),
+            inverseJoinColumns = @JoinColumn(name = "car_id")
+    )
     private List<Car> cars;
 
     @Id
@@ -27,11 +32,6 @@ public class Receipt {
         this.user = user;
         this.cars = cars;
         this.days = days;
-    }
-
-    public Receipt(User user, List<Car> cars) {
-        this.user = user;
-        this.cars = cars;
     }
 
     public Receipt(){}
@@ -69,16 +69,11 @@ public class Receipt {
     }
 
     public Double getTotalPrice() {
-        if(cars.size() != 0) {
-            for (Car car : cars) {
-                totalPrice += car.getPrice();
-            }
-            return totalPrice * days;
-        }
-        return 0.0;
+        return totalPrice;
     }
 
     public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
     }
+
 }

@@ -1,6 +1,5 @@
 package com.spring.learning.car_rental_20.controller;
 
-import com.spring.learning.car_rental_20.service.AddToReceipt;
 import com.spring.learning.car_rental_20.model.Car;
 import com.spring.learning.car_rental_20.model.Receipt;
 import com.spring.learning.car_rental_20.model.User;
@@ -12,9 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.LinkedList;
 import java.util.List;
 
 
@@ -31,27 +30,27 @@ public class ReceiptController {
     private ReceiptRepository receiptRepository;
 
     @GetMapping("/receipt")
-    public String showUserReceipt(Model model){
+    public String showUserReceipts(Model model){
         User user = userService.getLoggedInUser();
-        model.addAttribute("receipt list", user.getReceipts());
+        model.addAttribute("receipts", user.getReceipts());
         return "receipt";
     }
 
     @GetMapping("/car_list")
     public String viewCarList(Model model){
-        User currentUser = userService.getLoggedInUser();
         List<Car> allCars = carRepository.findAll();
-        List<Car> reservedCars = new LinkedList<>();
         model.addAttribute("cars", allCars);
-       // model.addAttribute("receipt", );
-        model.addAttribute("addToRe", new AddToReceipt(new Receipt(currentUser, reservedCars)));
+        model.addAttribute("receipt", new Receipt());
         return "car_list";
     }
 
-    @PostMapping("/car_list")
-    public String showReservePage(AddToReceipt addToReceipt){
-        addToReceipt.addCheckedCars();
-        System.out.println(addToReceipt.getReceipt().getCars());
-        return "receipt";
+    @PostMapping("/receipt")
+    public String showReservePage(@ModelAttribute Receipt receipt){
+        User currentUser = userService.getLoggedInUser();
+        receipt.setUser(currentUser);
+        currentUser.getReceipts().add(receipt);
+        receiptRepository.save(receipt);
+        return "redirect:receipt";
     }
+
 }

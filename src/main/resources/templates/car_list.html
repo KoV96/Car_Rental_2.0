@@ -17,8 +17,12 @@
 <br/>
 <hr/>
 <br/>
-<form th:action="@{/receipt}" th:object="${addToRe}" method="post">
+<form th:action="@{/receipt}" th:object="${receipt}" method="post">
     <div>
+        <div align="center">
+        <input type="number" th:field="*{days}">
+        <label>Enter days</label>
+        </div>
         <table class="table table-stripped table-bordered">
             <thead class="thead-dark">
             <th>Car Brand</th>
@@ -37,12 +41,8 @@
                 <td th:text="${car.getPrice}">Car Price</td>
                 <td>
                     <div class="ui checkbox">
-                        <input type="checkbox" th:field="*{checkedCars}" th:value="${car.getId}"/>
+                        <input type="checkbox" th:field="*{cars}" th:value="${car.getId}"/>
                     </div>
-                    <!--<div>
-                        <input type="text" th:field="*{days}">
-                        <label>Enter days</label>
-                    </div> -->
                 </td>
             </tr>
             </tbody>

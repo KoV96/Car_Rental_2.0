@@ -9,9 +9,34 @@
 <body>
 <div th:insert="header :: topnav"></div>
 <div class="container" align="center">
+    <br/>
     <h2>
         <mark>User Receipts</mark>
     </h2>
+    <br/>
+</div>
+<br/>
+<div th:each="receipt:${receipts}">
+    <table class="table table-stripped table-bordered">
+        <thead class="thead-dark">
+        <th>Name</th>
+        <th>Model</th>
+        <th>Price</th>
+        </thead>
+        <tbody>
+        <tr th:each="car : ${receipt.getCars}">
+            <td th:text="${car.getCarBrand}">Car Brand</td>
+            <td th:text="${car.getCarBrand}">Car Model</td>
+            <td th:text="${car.getPrice}">Car Price</td>
+        </tr>
+        <tr>
+            <td>Total Price</td>
+            <td>-</td>
+            <td th:text="${receipt.getTotalPrice}">Total</td>
+        </tr>
+        </tbody>
+
+    </table>
 </div>
 </body>
 </html>

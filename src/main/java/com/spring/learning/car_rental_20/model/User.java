@@ -11,7 +11,7 @@ import java.util.Set;
 @Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Receipt> receipts;
 
     @Id
@@ -112,4 +112,6 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
 }

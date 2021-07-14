@@ -6,10 +6,6 @@ import javax.persistence.*;
 @Table(name = "cars")
 public class Car {
 
-    @ManyToOne
-    @JoinColumn(name = "receipt_id")
-    private Receipt receipt;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "car_id")
@@ -92,14 +88,4 @@ public class Car {
     public void setPower(Double power) {
         this.power = power;
     }
-
-    public Receipt getReceipt() {
-        return receipt;
-    }
-
-    public void setReceipt(Receipt receipt) {
-        this.receipt = receipt;
-    }
-
-
 }
