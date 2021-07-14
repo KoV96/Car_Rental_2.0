@@ -12,3 +12,6 @@
 
 1. Go to src/test/java/com/spring/learning/car_rental_20. Here it is possible to test controller and model layers. 
 2. For testing run each test.
+
+--------------------------------------- How run application with Docker ----------------------------------------------------------
+
