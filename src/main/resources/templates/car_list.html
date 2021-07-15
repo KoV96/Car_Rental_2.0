@@ -7,49 +7,48 @@
     <link rel="stylesheet" type="text/css" href="header.css">
 </head>
 <body>
-<div th:insert="header :: topnav"></div>
-<div class="container" align="center">
-    <h1>Cars that You can reserve</h1>
-</div>
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out"/>
-</form>
-<br/>
-<hr/>
-<br/>
-<form th:action="@{/receipt}" th:object="${receipt}" method="post">
-    <div>
-        <div align="center">
-        <input type="number" th:field="*{days}">
-        <label>Enter days</label>
-        </div>
-        <table class="table table-stripped table-bordered">
-            <thead class="thead-dark">
-            <th>Car Brand</th>
-            <th>Car Model</th>
-            <th>Car Year</th>
-            <th>Car Power</th>
-            <th>Car Price</th>
-            <th>Choose Car</th>
-            </thead>
-            <tbody id="car_list">
-            <tr th:each="car : ${cars}">
-                <td th:text="${car.getCarBrand}">Car Brand</td>
-                <td th:text="${car.getCarModel}">Car Model</td>
-                <td th:text="${car.getYear}">Car Year</td>
-                <td th:text="${car.getPower}">Car Power</td>
-                <td th:text="${car.getPrice}">Car Price</td>
-                <td>
-                    <div class="ui checkbox">
-                        <input type="checkbox" th:field="*{cars}" th:value="${car.getId}"/>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <button type="submit" class="btn btn-primary">Add all</button>
+    <div th:insert="header :: topnav"></div>
+    <div class="container" align="center">
+        <h1>Cars that You can reserve</h1>
     </div>
-</form>
-
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+    <br/>
+    <hr/>
+    <br/>
+    <form th:action="@{/receipt}" th:object="${receipt}" method="post">
+        <div>
+            <div align="center">
+                <input type="number" th:field="*{days}">
+                <label>Enter days</label>
+            </div>
+            <table class="table table-stripped table-bordered">
+                <thead class="thead-dark">
+                <th>Car Brand</th>
+                <th>Car Model</th>
+                <th>Car Year</th>
+                <th>Car Power</th>
+                <th>Car Price</th>
+                <th>Choose Car</th>
+                </thead>
+                <tbody id="car_list">
+                <tr th:each="car : ${cars}">
+                    <td th:text="${car.getCarBrand}">Car Brand</td>
+                    <td th:text="${car.getCarModel}">Car Model</td>
+                    <td th:text="${car.getYear}">Car Year</td>
+                    <td th:text="${car.getPower}">Car Power</td>
+                    <td th:text="${car.getPrice}">Car Price</td>
+                    <td>
+                        <div class="ui checkbox">
+                            <input type="checkbox" th:field="*{cars}" th:value="${car.getId}"/>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">Add all</button>
+        </div>
+    </form>
 </body>
 </html>

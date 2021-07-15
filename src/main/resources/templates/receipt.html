@@ -17,6 +17,11 @@
 </div>
 <br/>
 <div th:each="receipt:${receipts}">
+    <div>
+        <p>
+            <mark>Receipt ID: <b th:text="${receipt.getId}"> </b></mark>
+        </p>
+    </div>
     <table class="table table-stripped table-bordered">
         <thead class="thead-dark">
         <th>Name</th>
@@ -29,14 +34,15 @@
             <td th:text="${car.getCarBrand}">Car Model</td>
             <td th:text="${car.getPrice}">Car Price</td>
         </tr>
-        <tr>
-            <td>Total Price</td>
-            <td>-</td>
-            <td th:text="${receipt.getTotalPrice}">Total</td>
-        </tr>
         </tbody>
-
     </table>
+    <p>
+        Total price = <b th:text="${receipt.getTotalPrice}"></b>
+    </p>
+        <form th:method="DELETE" th:action="@{/{id}(id=${receipt.getId})}">
+            <input  type="submit"  value="Delete">
+        </form>
+    <hr/>
 </div>
 </body>
 </html>

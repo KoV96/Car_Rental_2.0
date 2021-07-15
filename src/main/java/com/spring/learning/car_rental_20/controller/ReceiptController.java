@@ -10,9 +10,7 @@ import com.spring.learning.car_rental_20.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -49,8 +47,22 @@ public class ReceiptController {
         User currentUser = userService.getLoggedInUser();
         receipt.setUser(currentUser);
         currentUser.getReceipts().add(receipt);
+        receiptService.updateTotalPrice(receipt);
         receiptRepository.save(receipt);
         return "redirect:receipt";
     }
+
+    // Dose not work. Break frontend view after application start with this method
+    /*
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") Long id){
+        receiptRepository.deleteById(id);
+        User user = userService.getLoggedInUser();
+        user.getReceipts().remove(receiptRepository.getById(id));
+        return "redirect:receipt";
+    }
+     */
+
 
 }

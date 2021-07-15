@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <title>Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="home.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="home.css"/>
 </head>
 <body>
 
@@ -34,10 +35,11 @@
 <br/>
 <hr/>
 <div class="container">
-    <img src="images/home.jpg" alt="Cars" style="width:100%;">
+    <img src="images/home.jpg" alt="Cars" style="width:100%;"/>
     <div class="text-block">
         <h4>Rental</h4>
         <p>If you don`t have account, please <a th:href="@{/register}">SignUp</a> else if You have already had - <a th:href="@{/login}">LogIn</a></p>
+
     </div>
 </div>
 

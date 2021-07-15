@@ -18,7 +18,7 @@ public class MainController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("")
+    @GetMapping("/")
     public String homePage(){
         return "home";
     }
@@ -39,5 +39,15 @@ public class MainController {
     @GetMapping("/user_page")
     public String viewUserPage(){
         return "user_page";
+    }
+
+    @GetMapping("/admin_page")
+    public String showAdminPage(){
+        return "admin_page";
+    }
+
+    @GetMapping("/403")
+    public String errorAccess(){
+        return "403";
     }
 }

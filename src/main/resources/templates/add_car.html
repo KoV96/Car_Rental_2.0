@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Car</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="header.css">
+</head>
+<body>
+    <div sec:authorize="hasAuthority('ADMIN')">
+    <div th:insert="header :: topnav"></div>
+
+    <div class="container text center" align="center">
+            <h1>User Registration Page</h1>
+    </div>
+
+        <br/>
+        <br/>
+
+    <form th:action="@{/adding_car}" method="post" th:object="${newCar}"
+          style="max-width: 600px; margin: 0 auto;">
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-form-label col-4">Car Brand: </label>
+                <div class="col-8">
+                    <input type="text" class="form-control" th:field="*{carBrand}" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-form-label col-4">Car Model: </label>
+                <div class="col-8">
+                    <input type="text" class="form-control" th:field="*{carModel}" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-form-label col-4">Year: </label>
+                <div class="col-8">
+                    <input type="text" class="form-control" th:field="*{year}" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-form-label col-4">Power: </label>
+                <div class="col-8">
+                    <input type="number" class="form-control" th:field="*{power}" required>
+                </div>
+            </div>
+        </div>
+
+            <div class="m-3">
+                <div class="form-group row">
+                    <label class="col-form-label col-4">Price per day: </label>
+                    <div class="col-8">
+                        <input type="number" class="form-control" th:field="*{price}" required>
+                    </div>
+                </div>
+            </div>
+
+                <div class="m-3">
+                    <div class="form-group row">
+                        <label class="col-form-label col-4">Quantity: </label>
+                        <div class="col-8">
+                            <input type="number" class="form-control" th:field="*{quantity}" required>
+                        </div>
+                    </div>
+                </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary">Add Car</button>
+            </div>
+
+        </div>
+
+    </form>
+    </div>
+
+</body>
+</html>
