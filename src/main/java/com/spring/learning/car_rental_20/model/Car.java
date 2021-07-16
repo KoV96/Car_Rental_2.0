@@ -39,6 +39,15 @@ public class Car {
         this.price = price;
     }
 
+    public Car(String carBrand, String carModel, String year, Double power, Double price, Integer quantity) {
+        this.carBrand = carBrand;
+        this.carModel = carModel;
+        this.year = year;
+        this.power = power;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
     public Car(){}
 
     public Double getPrice() {

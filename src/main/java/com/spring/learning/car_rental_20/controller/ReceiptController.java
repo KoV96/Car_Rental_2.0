@@ -8,6 +8,7 @@ import com.spring.learning.car_rental_20.repos.ReceiptRepository;
 import com.spring.learning.car_rental_20.service.ReceiptService;
 import com.spring.learning.car_rental_20.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -43,6 +44,7 @@ public class ReceiptController {
     }
 
     @PostMapping("/receipt")
+    @PreAuthorize("hasAuthority('USER')")
     public String showReservePage(@ModelAttribute Receipt receipt){
         User currentUser = userService.getLoggedInUser();
         receipt.setUser(currentUser);

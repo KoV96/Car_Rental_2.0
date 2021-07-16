@@ -47,13 +47,13 @@ class ReceiptControllerTest {
                 .andExpect(xpath("//tbody[@id='car_list']/tr").nodeCount(3));
     }
 
-    /*
+
     @Test
-    public void showUserReceiptTest() throws Exception {
+    public void showUserReceiptsTest() throws Exception {
         this.mockMvc.perform(get("/receipt"))
                 .andDo(print())
                 .andExpect(authenticated())
                 .andExpect(status().isOk());
-    } */
+    }
 
 }
