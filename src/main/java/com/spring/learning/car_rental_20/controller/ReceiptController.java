@@ -44,8 +44,7 @@ public class ReceiptController {
     }
 
     @PostMapping("/receipt")
-    @PreAuthorize("hasAuthority('USER')")
-    public String showReservePage(@ModelAttribute Receipt receipt){
+    public String addToReceipt(@ModelAttribute Receipt receipt){
         User currentUser = userService.getLoggedInUser();
         receipt.setUser(currentUser);
         currentUser.getReceipts().add(receipt);
@@ -54,17 +53,21 @@ public class ReceiptController {
         return "redirect:receipt";
     }
 
-    // Dose not work. Break frontend view after application start with this method
-    /*
+    @GetMapping("/receipt/{id}")
+    public Receipt showReceiptDetails(@PathVariable("id") Long id){
+        return receiptRepository.getById(id);
+    }
 
-    @DeleteMapping("/{id}")
+
+
+    @DeleteMapping("/receipt/{id}")
     public String delete(@PathVariable("id") Long id){
-        receiptRepository.deleteById(id);
         User user = userService.getLoggedInUser();
         user.getReceipts().remove(receiptRepository.getById(id));
-        return "redirect:receipt";
+        receiptRepository.deleteById(id);
+        return "show";
     }
-     */
+
 
 
 }

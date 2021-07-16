@@ -26,11 +26,6 @@ public class AdminController {
     @PostMapping("/adding_car")
     public String addingCar(Car car){
         carRepository.save(car);
-        return "carAdded";
-    }
-
-    @GetMapping("/carAdded")
-    public void carAdded(Model model){
-        model.addAttribute("cars", carRepository.findAll());
+        return "redirect:/car_list";
     }
 }
