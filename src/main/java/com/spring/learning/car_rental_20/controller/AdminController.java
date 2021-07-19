@@ -18,13 +18,13 @@ public class AdminController {
     private CarRepository carRepository;
 
     @GetMapping("/add_car")
-    public String addCar(Model model){
+    public String addCar(Model model) {
         model.addAttribute("newCar", new Car());
         return "add_car";
     }
 
     @PostMapping("/adding_car")
-    public String addingCar(Car car){
+    public String addingCar(Car car) {
         carRepository.save(car);
         return "redirect:/car_list";
     }

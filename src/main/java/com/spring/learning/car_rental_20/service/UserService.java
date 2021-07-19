@@ -20,7 +20,7 @@ public class UserService {
     @Autowired
     private RoleRepository roleRepository;
 
-    public void saveUserWithDefaultRole(User user){
+    public void saveUserWithDefaultRole(User user) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         user.setPassword(encoder.encode(user.getPassword()));
         userRepository.save(user);
@@ -29,14 +29,14 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public User getLoggedInUser(){
+    public User getLoggedInUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication == null){
+        if (authentication == null) {
             return null;
         }
         User user = null;
         Object principal = authentication.getPrincipal();
-        if (principal instanceof CustomUserDetails){
+        if (principal instanceof CustomUserDetails) {
             user = ((CustomUserDetails) principal).getUser();
         }
         return user;

@@ -19,9 +19,9 @@ public class ReceiptService {
     @Autowired
     private UserRepository userRepository;
 
-    public void updateTotalPrice(Receipt receipt){
+    public void updateTotalPrice(Receipt receipt) {
         double total = 0;
-        for (Car car : receipt.getCars()){
+        for (Car car : receipt.getCars()) {
             total += car.getPrice() * receipt.getDays();
             car.setQuantity(car.getQuantity() - 1);
         }

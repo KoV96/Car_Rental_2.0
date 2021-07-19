@@ -48,7 +48,8 @@ public class Car {
         this.quantity = quantity;
     }
 
-    public Car(){}
+    public Car() {
+    }
 
     public Double getPrice() {
         return price;

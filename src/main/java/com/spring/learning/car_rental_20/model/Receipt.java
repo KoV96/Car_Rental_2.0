@@ -34,7 +34,8 @@ public class Receipt {
         this.days = days;
     }
 
-    public Receipt(){}
+    public Receipt() {
+    }
 
     public User getUser() {
         return user;
