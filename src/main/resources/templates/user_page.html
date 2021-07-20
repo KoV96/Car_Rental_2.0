@@ -22,7 +22,7 @@
 <div align="center">
     <h3><a th:href="@{/car_list}">View all cars</a></h3>
     <div sec:authorize="hasAuthority('USER')">
-        <h4><a th:href="@{/receipt}">View my present reserves</a></h4>
+        <h4><a th:href="@{/receipt_list}">View my present reserves</a></h4>
     </div>
     <div sec:authorize="hasAuthority('ADMIN')">
         <h4><a th:href="@{/add_car}">Add Car</a></h4>

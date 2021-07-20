@@ -30,7 +30,7 @@ public class ReceiptRepositoryTest {
     @Test
     public void createReceiptTest(){
         User user = new User("Oleksandr", "Kurylyk", "1111", "sanja@gmail.com");
-        List<Car> cars = new LinkedList<>();
+        Set<Car> cars = new HashSet<>();
         cars.add(new Car("Toyota", "Rav-4", "2016", 180.0, 70.0));
         Receipt receipt = new Receipt(user, cars, 5);
         Receipt savedReceipt = receiptRepository.save(receipt);

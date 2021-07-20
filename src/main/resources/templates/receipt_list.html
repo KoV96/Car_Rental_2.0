@@ -39,7 +39,7 @@
     <p>
         Total price = <b th:text="${receipt.getTotalPrice}"></b>
     </p>
-        <form th:method="DELETE" th:action="@{/receipt/{id}(id=${receipt.getId()})}">
+        <form th:method="DELETE" th:action="@{/receipts/{id}(id=${receipt.getId()})}">
             <input  type="submit"  value="Delete">
         </form>
     <hr/>

@@ -24,9 +24,10 @@ public class UserService {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         user.setPassword(encoder.encode(user.getPassword()));
         userRepository.save(user);
-        Role roleUser = roleRepository.findByName("User");
+        Role roleUser = roleRepository.findByName("USER");
         user.addRole(roleUser);
         userRepository.save(user);
+
     }
 
     public User getLoggedInUser() {

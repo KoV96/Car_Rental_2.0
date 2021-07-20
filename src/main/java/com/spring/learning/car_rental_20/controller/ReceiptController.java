@@ -1,6 +1,5 @@
 package com.spring.learning.car_rental_20.controller;
 
-import com.spring.learning.car_rental_20.model.Car;
 import com.spring.learning.car_rental_20.model.Receipt;
 import com.spring.learning.car_rental_20.model.User;
 import com.spring.learning.car_rental_20.repos.CarRepository;
@@ -8,14 +7,16 @@ import com.spring.learning.car_rental_20.repos.ReceiptRepository;
 import com.spring.learning.car_rental_20.service.ReceiptService;
 import com.spring.learning.car_rental_20.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 
-@Controller
+@RestController
+@RequestMapping("/receipts")
 public class ReceiptController {
 
     @Autowired
@@ -27,41 +28,21 @@ public class ReceiptController {
     @Autowired
     private ReceiptRepository receiptRepository;
 
-    @GetMapping("/receipt")
-    public String showUserReceipts(Model model) {
-        User user = userService.getLoggedInUser();
-        model.addAttribute("receipts", user.getReceipts());
-        return "receipt";
+    @GetMapping()
+    public List<Receipt> showUserReceipts(Model model) {
+        return receiptRepository.findAll();
     }
 
-    @GetMapping("/car_list")
-    public String viewCarList(Model model) {
-        List<Car> allCars = carRepository.findAll();
-        model.addAttribute("cars", allCars);
-        model.addAttribute("receipt", new Receipt());
-        return "car_list";
-    }
 
-    @PostMapping("/receipt")
-    public String addToReceipt(@ModelAttribute Receipt receipt) {
-        User currentUser = userService.getLoggedInUser();
-        receipt.setUser(currentUser);
-        currentUser.getReceipts().add(receipt);
-        receiptService.updateTotalPrice(receipt);
-        receiptRepository.save(receipt);
-        return "redirect:receipt";
-    }
 
-    @GetMapping("/receipt/{id}")
+    @GetMapping("/{id}")
     public Receipt showReceiptDetails(@PathVariable("id") Long id) {
         return receiptRepository.getById(id);
     }
 
-    @DeleteMapping("/receipt/{id}")
-    public String delete(@PathVariable("id") Long id) {
-        //User user = userService.getLoggedInUser();
-        //user.getReceipts().remove(receiptRepository.getById(id));
-        receiptRepository.deleteById(id);
-        return "show";
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") Long id, HttpServletResponse response) throws IOException {
+        receiptRepository.deleteReceipt(id);
+        response.sendRedirect("/receipt_list");
     }
 }

@@ -1,5 +1,8 @@
 package com.spring.learning.car_rental_20.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,6 +11,7 @@ public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @Column(name = "car_id")
     private Long id;
     @Column(name = "car_brand")

@@ -1,10 +1,12 @@
 package com.spring.learning.car_rental_20.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -12,10 +14,12 @@ import java.util.Set;
 public class User {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Receipt> receipts;
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Set<Receipt> receipts;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @Column(name = "user_id")
     private Long id;
 
@@ -48,11 +52,11 @@ public class User {
         this.roles.add(role);
     }
 
-    public List<Receipt> getReceipts() {
+    public Set<Receipt> getReceipts() {
         return receipts;
     }
 
-    public void setReceipts(List<Receipt> receipts) {
+    public void setReceipts(Set<Receipt> receipts) {
         this.receipts = receipts;
     }
 

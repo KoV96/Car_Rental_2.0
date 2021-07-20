@@ -15,7 +15,7 @@
     <br/>
     <hr/>
     <br/>
-    <form th:action="@{/receipt}" th:object="${receipt}" method="post">
+    <form th:action="@{/receipt_list}" th:object="${receipt}" method="post">
         <div>
             <div align="center" sec:authorize="hasAuthority('USER')">
                 <input type="number" th:field="*{days}">
